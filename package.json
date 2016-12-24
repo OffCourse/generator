@@ -1,0 +1,12 @@
+{
+  "name": "generator-offcourse",
+  "version": "0.0.1",
+  "description": "",
+  "files": [
+    "generators"
+  ],
+  "keywords": ["yeoman-generator"],
+  "dependencies": {
+    "yeoman-generator": "^1.0.0"
+  }
+}
