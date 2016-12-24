@@ -1,4 +1,4 @@
-var Base = require('../shared/base.js');
+var Base = require('../../shared/base.js');
 var _ = require('lodash');
 
 module.exports = Base.extend({
@@ -8,7 +8,9 @@ module.exports = Base.extend({
   },
 
   writing: function() {
-    this._copyTemplates(["index.js" , "context.json", "event.json"], this.options);
+    let overrides = {};
+    this._copyTemplates(["package.json", "index.js" , "context.json", "event.json", "build.yml"],
+                        _.merge(this.options, overrides));
   },
 
   install: function(){
