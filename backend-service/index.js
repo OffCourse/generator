@@ -11,7 +11,7 @@ module.exports = Base.extend({
   initializing() {
     this.options = {
       organization: this.config.get("organization"),
-      bucketName: this.config.get("bucket"),
+      bucket: this.config.get("bucket"),
       author: this.config.get("author"),
       service: this.options.serviceName
     };
