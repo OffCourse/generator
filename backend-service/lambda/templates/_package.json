@@ -4,13 +4,13 @@
   "description": "TODO",
   "main": "index.js",
   "scripts": {
-    "local":   "<%- invokeLocalTask %>",
-    "watch":   "<%- watchTask %>",
-    "build":   "<%- buildTask %>",
-    "package": "<%- packageTask %>",
-    "deploy": "aws cloudformation deploy --template-file <%= service %>.yml --stack-name <%= service %> --capabilities CAPABILITY_IAM",
-    "remote": "aws lambda invoke --function-name $(aws cloudformation describe-stack-resources --stack-name echo | jq '.StackResources | map(select(.ResourceType == \"AWS::Lambda::Function\"))[0].PhysicalResourceId' | sed -e 's/\"//g') --payload file://event.json output.json --log-type Tail | jq '.LogResult' > logs.txt && cat output.json | jq && echo \"\" && cat logs.txt | base64 -di",
-    "remove": "aws cloudformation delete-stack --stack-name <%= service %>"
+    "local":   "<%- invokeLocal %>",
+    "watch":   "<%- watch %>",
+    "build":   "<%- build %>",
+    "package": "<%- package %>",
+    "deploy":  "<%- deploy %>",
+    "remote":  "<%- remote %>",
+    "remove":  "<%- remove %>"
   },
   "author": "<%= author %>",
   "license": "MIT"

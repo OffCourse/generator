@@ -1,6 +1,6 @@
 var Base = require('../../shared/base.js');
 var _ = require('lodash');
-var tasks = require('./tasks')
+var tasks = require('./tasks');
 
 module.exports = Base.extend({
   constructor: function () {
@@ -11,10 +11,13 @@ module.exports = Base.extend({
   writing: function() {
     let overrides = {
       functionName: `${_.upperFirst(this.options.service)}Function`,
-      invokeLocalTask: tasks.invokeLocalTask,
-      watchTask: tasks.watchTask,
-      buildTask: tasks.buildTask,
-      packageTask: tasks.packageTask(this.options.service, this.options.bucket)
+      invokeLocal: tasks.invokeLocal,
+      watch: tasks.watch,
+      build: tasks.build,
+      package: tasks.package(this.options.service, this.options.bucket),
+      deploy: tasks.deploy(this.options.service),
+      remote: tasks.invokeRemote,
+      remove: tasks.remove(this.options.service)
     };
 
     this._copyTemplates(["package.json", "index.js" , "context.json", "event.json", "build.yml"],
