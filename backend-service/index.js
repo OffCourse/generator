@@ -1,7 +1,6 @@
 const Base = require('../shared/base');
 const _ = require('lodash');
 const Immutable = require('immutable');
-const path = require('path');
 const buildSpec = require('./create-buildspec');
 
 module.exports = Base.extend({
@@ -69,6 +68,8 @@ module.exports = Base.extend({
 
   install: function(){
     let deps = [];
-    this.yarnInstall(deps, {'exact': true});
+    if(!_.isEmpty(deps)){
+      this.yarnInstall(deps, {'exact': true});
+    }
   }
 });
