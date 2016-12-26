@@ -10,6 +10,7 @@
   ],
   "dependencies": {
     "immutable": "^3.8.1",
+    "js-yaml": "^3.7.0",
     "yeoman-generator": "^1.0.0"
   }
 }

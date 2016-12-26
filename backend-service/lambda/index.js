@@ -1,11 +1,11 @@
-var Base = require('../../shared/base.js');
-var _ = require('lodash');
-var tasks = require('./tasks');
+const Base = require('../../shared/base.js');
+const _ = require('lodash');
+const tasks = require('./tasks');
+const path = require('path');
 
 module.exports = Base.extend({
   constructor: function () {
     Base.apply(this, arguments);
-    this.destinationRoot(this.options.service);
   },
 
   writing: function() {
@@ -37,6 +37,8 @@ module.exports = Base.extend({
                 "request@2.75.0",
                 "unzipper@0.7.2"];
 
-    this.yarnInstall(deps, {'exact': true});
+        let oldDir = process.cwd();
+        var newdir = path.join(oldDir, this.options.service);
+        this.yarnInstall(deps, {'exact': true}, ()=> {}, {cwd: newdir});
   }
 });

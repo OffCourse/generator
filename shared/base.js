@@ -1,11 +1,14 @@
 var Generator = require('yeoman-generator');
 var _ = require('lodash');
+var path = require('path');
 
 module.exports = Generator.extend({
   _copyTemplate: function(fileName, options) {
+    let templatePath = path.join(options.templateDir || "", `_${fileName}`);
+    let destinationPath = path.join(this.options.service, options.destinationDir || "", fileName);
     this.fs.copyTpl(
-      this.templatePath(`${options.templateDir || ""}_${fileName}`),
-      this.destinationPath(`${options.destinationDir || ""}${fileName}`),
+      this.templatePath(templatePath),
+      this.destinationPath(destinationPath),
       options
     );
   },

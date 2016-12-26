@@ -4,7 +4,6 @@ var _ = require('lodash');
 module.exports = Base.extend({
   constructor: function () {
     Base.apply(this, arguments);
-    this.destinationRoot(this.options.service);
   },
 
   writing: function() {
@@ -17,5 +16,4 @@ module.exports = Base.extend({
     this._copyTemplates(["core.cljs", "specs.cljs", "mappings.cljs"],
                         _.merge(overrides, this.options));
   }
-
 });
