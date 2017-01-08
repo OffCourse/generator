@@ -4,17 +4,13 @@ const path = require('path');
 module.exports = Base.extend({
 
   initializing: function () {
-    let done = this.async();
     let oldDir = process.cwd();
     let newdir = path.join(oldDir, "infrastructure");
-    let ls = this.spawnCommand("terraform",
-                               ["output", "lambda_execution_role_arn"],
-                               {cwd: newdir,
-                                stdio: ['ignore', 'pipe', 'ignore']});
-    ls.stdout.on('data', (arn) => {
-      this.execution_role = arn.toString();
-      done();
-    });
+    let ls = this.spawnCommandSync("terraform",
+                                   ["output", "lambda_execution_role_arn"],
+                                   {cwd: newdir,
+                                    stdio: ['ignore', 'pipe', 'ignore']});
+    this.execution_role = ls.stdout.toString();
   },
 
   prompting: function() {
