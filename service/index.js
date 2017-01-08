@@ -62,10 +62,6 @@ module.exports = Base.extend({
     }
   },
 
-  writing(){
-    this.fs.write('buildspec.yml', buildSpec(this.config.get('services')));
-  },
-
   install: function(){
     let deps = [];
     if(!_.isEmpty(deps)){

@@ -20,7 +20,7 @@ module.exports = Base.extend({
       remove: tasks.remove(this.options.service)
     };
 
-    this._copyTemplates(["package.json", "index.js" , "context.json", "event.json", "build.yml"],
+    this._copyTemplates(["package.json", "index.js" , "context.json", "event.json"],
                         _.merge(this.options, overrides));
   },
 

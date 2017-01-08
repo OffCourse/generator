@@ -1,0 +1,6 @@
+{
+  "name": "<%= application %> services",
+  "description": "Node.js example project",
+  "role": "arn:aws:iam::293503197324:role/lambda",
+  "memory": 128
+}
